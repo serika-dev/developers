@@ -5,11 +5,21 @@
 :root {
   --foreground-rgb: 17, 24, 39;
   --background-rgb: 243, 244, 246;
+  --gray-900: #111827;
+  --gray-800: #1f2937;
+  --gray-700: #374151;
+  --gray-600: #4b5563;
+  --gray-500: #6b7280;
 }
 
 .dark {
   --foreground-rgb: 255, 255, 255;
   --background-rgb: 31, 41, 55;
+  --gray-900: #ffffff;
+  --gray-800: #f3f4f6;
+  --gray-700: #e5e7eb;
+  --gray-600: #d1d5db;
+  --gray-500: #9ca3af;
 }
 
 body {
@@ -25,12 +35,13 @@ input[type="number"],
 input[type="search"],
 textarea,
 select {
-  @apply bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white focus:ring-indigo-500 dark:focus:ring-indigo-400 focus:border-indigo-500 dark:focus:border-indigo-400;
+  @apply bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 focus:ring-indigo-500 dark:focus:ring-indigo-400 focus:border-indigo-500 dark:focus:border-indigo-400;
+  color: var(--gray-900);
 }
 
 input::placeholder,
 textarea::placeholder {
-  @apply text-gray-500 dark:text-gray-400;
+  color: var(--gray-500);
 }
 
 /* Prose styles */
@@ -66,7 +77,7 @@ textarea::placeholder {
 }
 
 .prose pre code {
-  @apply text-gray-100 dark:text-gray-100 bg-transparent;
+  @apply text-gray-100 bg-transparent;
   padding: 0;
 }
 
@@ -96,38 +107,23 @@ textarea::placeholder {
 
 /* Text colors */
 .text-gray-900 {
-  color: #111827;
-}
-.dark .text-gray-900 {
-  color: #ffffff;
+  color: var(--gray-900);
 }
 
 .text-gray-800 {
-  color: #1f2937;
-}
-.dark .text-gray-800 {
-  color: #f3f4f6;
+  color: var(--gray-800);
 }
 
 .text-gray-700 {
-  color: #374151;
-}
-.dark .text-gray-700 {
-  color: #e5e7eb;
+  color: var(--gray-700);
 }
 
 .text-gray-600 {
-  color: #4b5563;
-}
-.dark .text-gray-600 {
-  color: #d1d5db;
+  color: var(--gray-600);
 }
 
 .text-gray-500 {
-  color: #6b7280;
-}
-.dark .text-gray-500 {
-  color: #9ca3af;
+  color: var(--gray-500);
 }
 
 /* Monaco Editor */

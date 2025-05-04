@@ -44,7 +44,7 @@ export default function Dashboard() {
       name: 'Usage Stats',
       description: 'Monitor your API usage and costs',
       icon: ChartBarIcon,
-      href: '/dashboard/usage',
+      href: '/dashboard/billing',
       color: 'bg-green-500',
     },
     {
@@ -144,22 +144,16 @@ export default function Dashboard() {
                   <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
                     <p className="text-sm text-gray-500 dark:text-gray-400">Total Tokens</p>
                     <p className="text-2xl font-semibold text-gray-900 dark:text-white">{usage.summary.totalTokens.toLocaleString()}</p>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">€{(usage.summary.pricing.tokens * usage.summary.totalTokens).toFixed(2)}</p>
                   </div>
                   <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
                     <p className="text-sm text-gray-500 dark:text-gray-400">Total Images</p>
                     <p className="text-2xl font-semibold text-gray-900 dark:text-white">{usage.summary.totalImages.toLocaleString()}</p>
-                  </div>
-                  <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
-                    <p className="text-sm text-gray-500 dark:text-gray-400">Successful Requests</p>
-                    <p className="text-2xl font-semibold text-gray-900 dark:text-white">{usage.summary.successfulRequests.toLocaleString()}</p>
-                  </div>
-                  <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
-                    <p className="text-sm text-gray-500 dark:text-gray-400">Failed Requests</p>
-                    <p className="text-2xl font-semibold text-gray-900 dark:text-white">{usage.summary.failedRequests.toLocaleString()}</p>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">€{(usage.summary.pricing.images * usage.summary.totalImages).toFixed(2)}</p>
                   </div>
                 </div>
                 <div className="mt-4">
-                  <Link href="/dashboard/usage" className="text-sm font-medium text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300">
+                  <Link href="/dashboard/billing" className="text-sm font-medium text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300">
                     View detailed usage statistics →
                   </Link>
                 </div>

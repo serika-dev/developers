@@ -70,7 +70,7 @@ export default function BillingPage() {
                   <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-1/4"></div>
                   <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-1/2"></div>
                 </div>
-              ) : user?.hasAPISubscription ? (
+              ) : user?.apiSubscriptionId && user?.apiSubscriptionStatus === 'active' ? (
                 <div className="bg-green-50 dark:bg-green-900 p-4 rounded-md">
                   <div className="flex">
                     <div className="flex-shrink-0">

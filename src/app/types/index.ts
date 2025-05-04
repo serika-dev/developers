@@ -116,12 +116,6 @@ export interface User {
   };
   lastPaymentDate?: string;
   lastPaymentStatus?: string;
-  lastAPIPaymentDate?: string;
-  lastAPIPaymentStatus?: string;
-  apiSubscriptionStatus?: string;
-  apiSubscriptionPeriodEnd?: string;
-  apiSubscriptionId?: string;
-  hasAPISubscription?: boolean;
   followers: Array<{
     followerUserID: {
       _id: string;
