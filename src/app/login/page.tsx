@@ -33,9 +33,10 @@ export default function LoginPage() {
       await login(email, password);
       const redirectTo = searchParams.get('redirect') || '/dashboard';
       router.push(redirectTo);
-    } catch (error: any) {
+    } catch (error: Error | unknown) {
       console.error('Login error:', error);
-      toast.error(error.response?.data?.msg || 'Login failed. Please check your credentials and try again.');
+      const errorResponse = error as { response?: { data?: { msg?: string } } };
+      toast.error(errorResponse.response?.data?.msg || 'Login failed. Please check your credentials and try again.');
     } finally {
       setLoading(false);
     }

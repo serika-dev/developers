@@ -103,8 +103,8 @@ export interface User {
   lastPaymentDate?: string;
   lastPaymentStatus?: string;
   apiSubscriptionStatus?: string;
-  followers?: any[];
-  following?: any[];
+  followers?: Array<{ _id: string; username: string }>;
+  following?: Array<{ _id: string; username: string }>;
   ageVerification?: {
     isVerified: boolean;
     dateOfBirth?: string;

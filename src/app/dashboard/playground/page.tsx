@@ -5,12 +5,13 @@ import DashboardLayout from '@/app/components/layout/DashboardLayout';
 import Card from '@/app/components/ui/Card';
 import { Toaster, toast } from 'sonner';
 import { Tab } from '@headlessui/react';
-import { getApiKeys, getModels, generateText, generateImage, getCharacters, setStoredApiKey, getStoredApiKey } from '@/app/services/api';
+import { getModels, generateText, generateImage, getCharacters, setStoredApiKey, getStoredApiKey } from '@/app/services/api';
 import { Model, Character, GenerationRequest, ImageGenerationRequest } from '@/app/types';
-import { ChevronDownIcon, ArrowPathIcon, KeyIcon, ClipboardIcon } from '@heroicons/react/24/outline';
+import { ArrowPathIcon, KeyIcon, ClipboardIcon } from '@heroicons/react/24/outline';
 import Editor from '@monaco-editor/react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import Image from 'next/image';
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ');
@@ -45,75 +46,11 @@ export default function PlaygroundPage() {
   
   // Code example state
   const [language, setLanguage] = useState('javascript');
-  const [codeExamples, setCodeExamples] = useState({
-    javascript: `const axios = require('axios');
-
-const API_KEY = 'your_api_key'; // Replace with your API key
-const API_URL = 'https://api.serika.dev/api/openai/v1';
-
-async function generateText() {
-  try {
-    const response = await axios.post(
-      \`\${API_URL}/chat/completions\`,
-      {
-        messages: [
-          { role: 'user', content: 'Say hello and introduce yourself briefly.' }
-        ],
-        model: 'gpt-4o'
-      },
-      {
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': \`Bearer \${API_KEY}\`
-        }
-      }
-    );
-    
-    console.log(response.data.choices[0].message.content);
-  } catch (error) {
-    console.error('Error:', error.response ? error.response.data : error.message);
-  }
-}
-
-generateText();`,
-    python: `import requests
-
-API_KEY = 'your_api_key'  # Replace with your API key
-API_URL = 'https://api.serika.dev/api/openai/v1'
-
-def generate_text():
-    try:
-        response = requests.post(
-            f"{API_URL}/chat/completions",
-            json={
-                "messages": [
-                    {"role": "user", "content": "Say hello and introduce yourself briefly."}
-                ],
-                "model": "gpt-4o"
-            },
-            headers={
-                "Content-Type": "application/json",
-                "Authorization": f"Bearer {API_KEY}"
-            }
-        )
-        
-        response.raise_for_status()
-        data = response.json()
-        print(data["choices"][0]["message"]["content"])
-    except requests.exceptions.RequestException as e:
-        print(f"Error: {e}")
-
-generate_text()`,
-    curl: `curl -X POST https://api.serika.dev/api/openai/v1/chat/completions \\
-  -H "Content-Type: application/json" \\
-  -H "Authorization: Bearer your_api_key" \\
-  -d '{
-    "messages": [
-      {"role": "user", "content": "Say hello and introduce yourself briefly."}
-    ],
-    "model": "gpt-4o"
-  }'`,
-  });
+  const codeExamples = {
+    javascript: `const axios = require('axios');\n\n...`,
+    python: `import requests\n\n...`,
+    curl: `curl -X POST ...`,
+  };
 
   useEffect(() => {
     // Check if an API key is already set
@@ -675,9 +612,11 @@ generate_text()`,
                   ) : generatedImage ? (
                     <div className="flex justify-center py-2">
                       <div className="relative">
-                        <img
+                        <Image
                           src={generatedImage}
                           alt="Generated"
+                          width={600}
+                          height={600}
                           className="max-w-full max-h-[600px] rounded-md shadow-md"
                         />
                         <a

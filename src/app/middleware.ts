@@ -1,9 +1,6 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-// Get JWT token cookie name from env or use default
-const JWT_COOKIE_NAME = process.env.NEXT_PUBLIC_JWT_TOKEN_COOKIE_NAME || 'serika_jwt';
-
 export function middleware(request: NextRequest) {
   const token = request.cookies.get('auth_token')?.value;
   const isAuthRoute = request.nextUrl.pathname === '/login';

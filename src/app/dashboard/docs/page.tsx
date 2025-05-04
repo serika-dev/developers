@@ -240,8 +240,10 @@ export default function DocsPage() {
 
           <h3>Using Characters in Chat</h3>
           <p>
-            You can use characters in chat completions by providing their ID in the
-            character_id parameter:
+            You can&apos;t see it again!
+          </p>
+          <p>
+            You won&apos;t be able to access it later.
           </p>
           <SyntaxHighlighter language="javascript" style={atomDark}>
             {`{

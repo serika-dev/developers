@@ -14,7 +14,6 @@ import {
 const navigation = [
   { name: 'Dashboard', href: '/dashboard', icon: HomeIcon },
   { name: 'API Keys', href: '/dashboard/api-keys', icon: KeyIcon },
-  { name: 'Usage', href: '/dashboard/usage', icon: ChartBarIcon },
   { name: 'Playground', href: '/dashboard/playground', icon: BeakerIcon },
   { name: 'Billing', href: '/dashboard/billing', icon: CreditCardIcon },
   { name: 'Documentation', href: '/dashboard/docs', icon: DocumentTextIcon },

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { BellIcon } from '@heroicons/react/24/outline';
 import { logout, getCurrentUser } from '@/app/services/api';
 import { useRouter } from 'next/navigation';
@@ -57,9 +58,11 @@ export default function Header({ title }: { title: string }) {
               <span className="sr-only">Open user menu</span>
               <div className="h-8 w-8 rounded-full overflow-hidden bg-indigo-600 flex items-center justify-center text-white">
                 {user?.avatar ? (
-                  <img
+                  <Image
                     src={user.avatar}
                     alt={user.username}
+                    width={32}
+                    height={32}
                     className="h-full w-full object-cover"
                   />
                 ) : (
