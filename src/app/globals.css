@@ -1,0 +1,103 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  color: #111827;
+  background-color: #f3f4f6;
+}
+
+.prose {
+  color: #111827;
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
+  color: #111827;
+}
+
+.prose p,
+.prose ul,
+.prose ol,
+.prose blockquote {
+  color: #111827;
+}
+
+.prose code {
+  background-color: #f3f4f6;
+  color: #111827;
+  padding: 0.2em 0.4em;
+  border-radius: 0.25rem;
+}
+
+.prose pre {
+  background-color: #1f2937;
+}
+
+.prose pre code {
+  color: #f3f4f6;
+  background-color: transparent;
+  padding: 0;
+}
+
+.prose strong {
+  color: #111827;
+}
+
+.prose a {
+  color: #4f46e5;
+}
+
+.prose a:hover {
+  color: #4338ca;
+}
+
+.prose table {
+  color: #111827;
+}
+
+.prose thead {
+  color: #111827;
+}
+
+.prose tbody {
+  color: #111827;
+}
+
+/* Force text colors */
+.text-gray-900,
+.text-gray-800,
+.text-gray-700,
+.text-gray-600 {
+  color: #111827 !important;
+}
+
+.text-gray-500 {
+  color: #6b7280 !important;
+}
+
+/* Override any potential dark mode settings */
+@media (prefers-color-scheme: dark) {
+  body,
+  .prose,
+  .prose h1,
+  .prose h2,
+  .prose h3,
+  .prose h4,
+  .prose h5,
+  .prose h6,
+  .prose p,
+  .prose ul,
+  .prose ol,
+  .prose blockquote,
+  .prose strong,
+  .prose table,
+  .prose thead,
+  .prose tbody {
+    color: #111827 !important;
+  }
+}
