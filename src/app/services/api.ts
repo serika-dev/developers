@@ -217,12 +217,12 @@ export async function setupBilling() {
       }
     );
     return response.data;
-  } catch (error: any) {
+  } catch (error) {
     console.error('Error setting up billing:', error);
-    if (error.response?.data?.msg?.includes('already have an active subscription')) {
+    if (axios.isAxiosError(error) && error.response?.data?.msg?.includes('already have an active subscription')) {
       throw new Error('You already have an active Serika+ subscription. Please contact support to set up API billing.');
     }
-    throw new Error(error.response?.data?.msg || 'Failed to setup billing');
+    throw new Error(axios.isAxiosError(error) ? error.response?.data?.msg || 'Failed to setup billing' : 'Failed to setup billing');
   }
 }
 

@@ -41,12 +41,12 @@ export default function BillingPage() {
         return;
       }
       const response = await setupBilling();
-      if (response.url) {
+      if ('url' in response) {
         window.location.href = response.url;
       }
-    } catch (error: any) {
+    } catch (error) {
       console.error('Error setting up billing:', error);
-      toast.error(error.message || 'Failed to set up billing');
+      toast.error(error instanceof Error ? error.message : 'Failed to set up billing');
     } finally {
       setSettingUpBilling(false);
     }
