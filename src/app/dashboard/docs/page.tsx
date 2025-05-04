@@ -145,7 +145,7 @@ export default function DocsPage() {
         <div className="prose max-w-none">
           <h2>Image Generation API</h2>
           <p>
-            Generate high-quality images using NovelAI's advanced image models. Supports
+            Generate high-quality images using NovelAI&apos;s advanced image models. Supports
             various sizes, styles, and negative prompts.
           </p>
 
@@ -213,7 +213,7 @@ export default function DocsPage() {
         <div className="prose max-w-none">
           <h2>Characters API</h2>
           <p>
-            Access and interact with Serika's character database. Get character information
+            Access and interact with Serika&apos;s character database. Get character information
             and use them in chat completions.
           </p>
 
