@@ -102,7 +102,12 @@ export interface User {
   };
   lastPaymentDate?: string;
   lastPaymentStatus?: string;
+  lastAPIPaymentDate?: string;
+  lastAPIPaymentStatus?: string;
   apiSubscriptionStatus?: string;
+  apiSubscriptionPeriodEnd?: string;
+  apiSubscriptionId?: string;
+  hasAPISubscription?: boolean;
   followers?: Array<{ _id: string; username: string }>;
   following?: Array<{ _id: string; username: string }>;
   ageVerification?: {
