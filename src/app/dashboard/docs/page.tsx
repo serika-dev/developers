@@ -245,6 +245,10 @@ export default function DocsPage() {
           <p>
             You won&apos;t be able to access it later.
           </p>
+          <p>
+            You can use characters in chat completions by providing their ID in the
+            character_id parameter:
+          </p>
           <SyntaxHighlighter language="javascript" style={atomDark}>
             {`{
   "messages": [

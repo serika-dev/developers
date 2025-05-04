@@ -3,7 +3,6 @@ import { usePathname } from 'next/navigation';
 import { 
   HomeIcon, 
   KeyIcon, 
-  ChartBarIcon, 
   BeakerIcon, 
   DocumentTextIcon,
   CodeBracketIcon,
