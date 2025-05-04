@@ -100,7 +100,7 @@ export default function ProfilePage() {
                   )}
                   <label
                     htmlFor="avatar-upload"
-                    className="absolute bottom-0 right-0 bg-white rounded-full p-1 shadow-lg cursor-pointer hover:bg-gray-50"
+                    className={`absolute bottom-0 right-0 bg-white rounded-full p-1 shadow-lg cursor-pointer hover:bg-gray-50 ${uploading ? 'opacity-50' : ''}`}
                   >
                     <input
                       id="avatar-upload"
