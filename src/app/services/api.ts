@@ -204,4 +204,26 @@ export const generateImage = async (data: ImageGenerationRequest) => {
   return response.data;
 };
 
+export async function setupBilling() {
+  try {
+    const response = await axios.post(
+      `${API_BASE_URL}${API_PATH}/billing/setup`,
+      {},
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          'x-auth-token': getAuthToken()
+        }
+      }
+    );
+    return response.data;
+  } catch (error: any) {
+    console.error('Error setting up billing:', error);
+    if (error.response?.data?.msg?.includes('already have an active subscription')) {
+      throw new Error('You already have an active Serika+ subscription. Please contact support to set up API billing.');
+    }
+    throw new Error(error.response?.data?.msg || 'Failed to setup billing');
+  }
+}
+
 export default api; 

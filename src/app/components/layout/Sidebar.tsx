@@ -24,10 +24,10 @@ export default function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <div className="flex flex-col h-full bg-gray-900 w-64 text-white">
-      <div className="flex items-center justify-center p-6 border-b border-gray-800">
+    <div className="flex flex-col h-full bg-gray-800 dark:bg-gray-900 w-64">
+      <div className="flex items-center justify-center p-6 border-b border-gray-700 dark:border-gray-800">
         <Link href="/dashboard" className="flex items-center">
-          <span className="text-xl font-bold">Serika.dev</span>
+          <span className="text-xl font-bold text-white">Serika.dev</span>
           <span className="ml-2 bg-indigo-600 text-white text-xs px-2 py-1 rounded-md">API</span>
         </Link>
       </div>
@@ -41,8 +41,8 @@ export default function Sidebar() {
                 href={item.href}
                 className={`group flex items-center px-4 py-3 text-sm rounded-md ${
                   isActive
-                    ? 'bg-indigo-700 text-white'
-                    : 'text-gray-300 hover:bg-gray-800 hover:text-white'
+                    ? 'bg-indigo-600 text-white'
+                    : 'text-gray-300 hover:bg-gray-700 dark:hover:bg-gray-800 hover:text-white'
                 }`}
               >
                 <item.icon
@@ -57,10 +57,10 @@ export default function Sidebar() {
           })}
         </nav>
       </div>
-      <div className="p-4 border-t border-gray-800">
+      <div className="p-4 border-t border-gray-700 dark:border-gray-800">
         <div className="flex items-center">
           <div className="flex-shrink-0">
-            <span className="inline-block h-8 w-8 rounded-full bg-gray-700"></span>
+            <span className="inline-block h-8 w-8 rounded-full bg-gray-600 dark:bg-gray-700"></span>
           </div>
           <div className="ml-3">
             <p className="text-sm font-medium text-white">Developer Portal</p>

@@ -2,13 +2,40 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  color: #111827;
-  background-color: #f3f4f6;
+:root {
+  --foreground-rgb: 17, 24, 39;
+  --background-rgb: 243, 244, 246;
 }
 
+.dark {
+  --foreground-rgb: 255, 255, 255;
+  --background-rgb: 31, 41, 55;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background-color: rgb(var(--background-rgb));
+}
+
+/* Form elements */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="search"],
+textarea,
+select {
+  @apply bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white focus:ring-indigo-500 dark:focus:ring-indigo-400 focus:border-indigo-500 dark:focus:border-indigo-400;
+}
+
+input::placeholder,
+textarea::placeholder {
+  @apply text-gray-500 dark:text-gray-400;
+}
+
+/* Prose styles */
 .prose {
-  color: #111827;
+  color: rgb(var(--foreground-rgb));
 }
 
 .prose h1,
@@ -17,70 +44,98 @@ body {
 .prose h4,
 .prose h5,
 .prose h6 {
-  color: #111827;
+  color: rgb(var(--foreground-rgb));
 }
 
 .prose p,
 .prose ul,
 .prose ol,
 .prose blockquote {
-  color: #111827;
+  color: rgb(var(--foreground-rgb));
 }
 
 .prose code {
-  background-color: #f3f4f6;
-  color: #111827;
+  background-color: rgb(var(--background-rgb));
+  color: rgb(var(--foreground-rgb));
   padding: 0.2em 0.4em;
   border-radius: 0.25rem;
 }
 
 .prose pre {
-  background-color: #1f2937;
+  @apply bg-gray-800 dark:bg-gray-900;
 }
 
 .prose pre code {
-  color: #f3f4f6;
-  background-color: transparent;
+  @apply text-gray-100 dark:text-gray-100 bg-transparent;
   padding: 0;
 }
 
 .prose strong {
-  color: #111827;
+  color: rgb(var(--foreground-rgb));
 }
 
 .prose a {
-  color: #4f46e5;
+  @apply text-indigo-600 dark:text-indigo-400;
 }
 
 .prose a:hover {
-  color: #4338ca;
+  @apply text-indigo-700 dark:text-indigo-300;
 }
 
 .prose table {
-  color: #111827;
+  color: rgb(var(--foreground-rgb));
 }
 
 .prose thead {
-  color: #111827;
+  color: rgb(var(--foreground-rgb));
 }
 
 .prose tbody {
-  color: #111827;
+  color: rgb(var(--foreground-rgb));
 }
 
-/* Force text colors */
-.text-gray-900,
-.text-gray-800,
-.text-gray-700,
+/* Text colors */
+.text-gray-900 {
+  color: #111827;
+}
+.dark .text-gray-900 {
+  color: #ffffff;
+}
+
+.text-gray-800 {
+  color: #1f2937;
+}
+.dark .text-gray-800 {
+  color: #f3f4f6;
+}
+
+.text-gray-700 {
+  color: #374151;
+}
+.dark .text-gray-700 {
+  color: #e5e7eb;
+}
+
 .text-gray-600 {
-  color: #111827 !important;
+  color: #4b5563;
+}
+.dark .text-gray-600 {
+  color: #d1d5db;
 }
 
 .text-gray-500 {
-  color: #6b7280 !important;
+  color: #6b7280;
+}
+.dark .text-gray-500 {
+  color: #9ca3af;
 }
 
-/* Override any potential dark mode settings */
+/* Monaco Editor */
+.monaco-editor {
+  @apply dark:bg-gray-900;
+}
+
+/* Dark mode overrides */
 @media (prefers-color-scheme: dark) {
   body,
   .prose,
@@ -98,6 +153,6 @@ body {
   .prose table,
   .prose thead,
   .prose tbody {
-    color: #111827 !important;
+    color: rgb(var(--foreground-rgb)) !important;
   }
 }

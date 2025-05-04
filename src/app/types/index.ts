@@ -26,8 +26,22 @@ export interface EndpointUsage {
 }
 
 export interface APIUsageResponse {
-  summary: APIUsageSummary;
-  byEndpoint: EndpointUsage[];
+  summary: {
+    totalTokens: number;
+    totalImages: number;
+    totalCost: number;
+    pricing: {
+      tokens: number;
+      images: number;
+    };
+  };
+  byEndpoint: Array<{
+    _id: string;
+    totalRequests: number;
+    totalTokens: number;
+    totalImages: number;
+    totalCost: number;
+  }>;
 }
 
 export interface GenerationRequest {
@@ -81,8 +95,8 @@ export interface User {
   _id: string;
   username: string;
   email: string;
-  avatar?: string;
-  banner?: string;
+  avatar: string;
+  banner: string;
   joinDate: string;
   ips: {
     address: string;
@@ -108,14 +122,34 @@ export interface User {
   apiSubscriptionPeriodEnd?: string;
   apiSubscriptionId?: string;
   hasAPISubscription?: boolean;
-  followers?: Array<{ _id: string; username: string }>;
-  following?: Array<{ _id: string; username: string }>;
+  followers: Array<{
+    followerUserID: {
+      _id: string;
+      username: string;
+    };
+  }>;
+  following: Array<{
+    followingUserID: {
+      _id: string;
+      username: string;
+    };
+  }>;
   ageVerification?: {
     isVerified: boolean;
-    dateOfBirth?: string;
-    verifiedAt?: string;
+    dateOfBirth: string;
+    verifiedAt: string;
   };
-  preferences: {
+  preferences?: {
     showNSFW: boolean;
   };
+  isPremium: boolean;
+  subscriptionStatus?: string;
+  subscriptionId?: string;
+  subscriptionPlan?: string;
+  subscriptionPeriodEnd?: string;
+  apiSubscriptionId?: string;
+  apiSubscriptionPeriodEnd?: string;
+  apiSubscriptionStatus?: string;
+  lastAPIPaymentDate?: string;
+  lastAPIPaymentStatus?: string;
 } 

@@ -9,15 +9,15 @@ interface CardProps {
 
 export default function Card({ children, title, className = '', footer }: CardProps) {
   return (
-    <div className={`bg-white overflow-hidden shadow rounded-lg ${className}`} style={{ color: '#111827' }}>
+    <div className={`bg-white dark:bg-gray-800 overflow-hidden shadow rounded-lg ${className}`}>
       {title && (
-        <div className="px-4 py-5 sm:px-6 border-b border-gray-200">
-          <h3 className="text-lg leading-6 font-medium" style={{ color: '#111827' }}>{title}</h3>
+        <div className="px-4 py-5 sm:px-6 border-b border-gray-200 dark:border-gray-700">
+          <h3 className="text-lg leading-6 font-medium text-gray-900 dark:text-white">{title}</h3>
         </div>
       )}
-      <div className="px-4 py-5 sm:p-6" style={{ color: '#111827' }}>{children}</div>
+      <div className="px-4 py-5 sm:p-6 text-gray-900 dark:text-white">{children}</div>
       {footer && (
-        <div className="px-4 py-4 sm:px-6 bg-gray-50 border-t border-gray-200">
+        <div className="px-4 py-4 sm:px-6 bg-gray-50 dark:bg-gray-700 border-t border-gray-200 dark:border-gray-700">
           {footer}
         </div>
       )}
