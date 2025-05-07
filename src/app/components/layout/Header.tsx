@@ -3,13 +3,18 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { SunIcon, MoonIcon } from '@heroicons/react/24/outline';
+import { SunIcon, MoonIcon, Bars3Icon } from '@heroicons/react/24/outline';
 import { logout, getCurrentUser } from '@/app/services/api';
 import { useRouter } from 'next/navigation';
 import { User } from '@/app/types';
 import { useTheme } from '@/app/providers/ThemeProvider';
 
-export default function Header({ title }: { title: string }) {
+interface HeaderProps {
+  title: string;
+  onMenuClick: () => void;
+}
+
+export default function Header({ title, onMenuClick }: HeaderProps) {
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
   const [user, setUser] = useState<User | null>(null);
   const router = useRouter();
@@ -37,7 +42,17 @@ export default function Header({ title }: { title: string }) {
   return (
     <header className="bg-white dark:bg-gray-800 shadow">
       <div className="flex justify-between items-center px-4 py-4 sm:px-6 lg:px-8">
-        <h1 className="text-xl font-semibold text-gray-900 dark:text-white">{title}</h1>
+        <div className="flex items-center">
+          <button
+            type="button"
+            className="md:hidden p-2 rounded-md text-gray-400 hover:text-gray-500 dark:text-gray-300 dark:hover:text-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            onClick={onMenuClick}
+          >
+            <span className="sr-only">Open sidebar</span>
+            <Bars3Icon className="h-6 w-6" aria-hidden="true" />
+          </button>
+          <h1 className="text-xl font-semibold text-gray-900 dark:text-white ml-2 md:ml-0">{title}</h1>
+        </div>
         <div className="flex items-center space-x-4">
           <button
             type="button"
