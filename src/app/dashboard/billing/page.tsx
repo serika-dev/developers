@@ -49,7 +49,7 @@ export default function BillingPage() {
   };
 
   const calculateCost = (tokens: number, images: number) => {
-    const tokenCost = tokens * 0.00007; // €0.00007 per token
+    const tokenCost = tokens * 0.000007; // €0.000007 per token
     const imageCost = images * 0.02; // €0.02 per image
     return tokenCost + imageCost;
   };
@@ -177,7 +177,7 @@ export default function BillingPage() {
           <Card title="Pricing">
             <div className="prose max-w-none dark:prose-invert">
               <h3>Token Usage</h3>
-              <p>€0.00007 per token</p>
+              <p>€0.000007 per token</p>
 
               <h3>Image Generation</h3>
               <p>€0.02 per image</p>
