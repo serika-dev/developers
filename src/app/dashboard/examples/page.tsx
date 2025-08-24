@@ -5,7 +5,7 @@ import DashboardLayout from '@/app/components/layout/DashboardLayout';
 import Card from '@/app/components/ui/Card';
 import { Tab } from '@headlessui/react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { atomDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import atomDark from 'react-syntax-highlighter/dist/esm/styles/prism/atom-dark';
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ');
