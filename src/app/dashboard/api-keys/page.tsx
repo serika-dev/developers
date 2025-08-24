@@ -167,7 +167,7 @@ export default function ApiKeysPage() {
         <Card title="Create New API Key">
           <form onSubmit={handleCreateKey} className="space-y-4">
             <div>
-              <label htmlFor="key-name" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="key-name" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                 Key Name
               </label>
               <div className="mt-1 flex rounded-md shadow-sm">
@@ -179,7 +179,7 @@ export default function ApiKeysPage() {
                     type="text"
                     name="key-name"
                     id="key-name"
-                    className="focus:ring-indigo-500 focus:border-indigo-500 block w-full rounded-md pl-10 sm:text-sm border-gray-300"
+                    className="focus:ring-indigo-500 focus:border-indigo-500 block w-full rounded-md pl-10 sm:text-sm border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
                     placeholder="My API Key"
                     value={newKeyName}
                     onChange={(e) => setNewKeyName(e.target.value)}
@@ -199,26 +199,26 @@ export default function ApiKeysPage() {
         <div className="mt-6">
           <Card title="Your API Keys">
             {loading ? (
-              <div className="text-center py-10">
+                              <div className="text-center py-10">
                 <div className="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-indigo-600"></div>
-                <p className="mt-2 text-gray-500">Loading your API keys...</p>
+                <p className="mt-2 text-gray-500 dark:text-gray-400">Loading your API keys...</p>
               </div>
             ) : apiKeys.length === 0 ? (
               <div className="text-center py-10">
                 <KeyIcon className="mx-auto h-12 w-12 text-gray-400" />
-                <h3 className="mt-2 text-sm font-semibold text-gray-900">No API keys</h3>
-                <p className="mt-1 text-sm text-gray-500">Get started by creating a new API key.</p>
+                <h3 className="mt-2 text-sm font-semibold text-gray-900 dark:text-white">No API keys</h3>
+                <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">Get started by creating a new API key.</p>
               </div>
             ) : (
               <div className="flow-root">
-                <ul className="divide-y divide-gray-200">
+                <ul className="divide-y divide-gray-200 dark:divide-gray-700">
                   {apiKeys.map((key) => (
                     <li key={key._id} className="py-4">
                       <div className="space-y-3">
                         <div className="flex items-center justify-between">
                           <div>
-                            <h3 className="text-sm font-medium text-gray-900">{key.name}</h3>
-                            <p className="text-xs text-gray-500">
+                            <h3 className="text-sm font-medium text-gray-900 dark:text-white">{key.name}</h3>
+                            <p className="text-xs text-gray-500 dark:text-gray-400">
                               Created on {new Date(key.createdAt).toLocaleDateString()}
                               {key.lastUsed && ` • Last used on ${new Date(key.lastUsed).toLocaleDateString()}`}
                             </p>
@@ -265,8 +265,8 @@ export default function ApiKeysPage() {
 
                         {/* Permissions */}
                         {editingPermissions === key._id ? (
-                          <div className="bg-gray-50 p-3 rounded-md">
-                            <h4 className="text-sm font-medium text-gray-900 mb-2">Edit Permissions</h4>
+                          <div className="bg-gray-50 dark:bg-gray-900 p-3 rounded-md">
+                            <h4 className="text-sm font-medium text-gray-900 dark:text-white mb-2">Edit Permissions</h4>
                             <div className="space-y-2">
                               {permissionOptions.map((option) => (
                                 <div key={option.id} className="flex items-center">
@@ -279,7 +279,7 @@ export default function ApiKeysPage() {
                                   />
                                   <label
                                     htmlFor={`permission-${option.id}`}
-                                    className="ml-2 block text-sm text-gray-900"
+                                    className="ml-2 block text-sm text-gray-900 dark:text-white"
                                   >
                                     {option.name}
                                   </label>
@@ -290,7 +290,7 @@ export default function ApiKeysPage() {
                               <button
                                 type="button"
                                 onClick={() => setEditingPermissions(null)}
-                                className="px-3 py-1 text-sm text-gray-700 hover:text-gray-900 border border-gray-300 rounded-md shadow-sm hover:bg-gray-50"
+                                className="px-3 py-1 text-sm text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white border border-gray-300 dark:border-gray-600 rounded-md shadow-sm hover:bg-gray-50 dark:hover:bg-gray-800"
                               >
                                 Cancel
                               </button>
@@ -308,7 +308,7 @@ export default function ApiKeysPage() {
                             {key.permissions.map((permission) => (
                               <span
                                 key={permission}
-                                className="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium bg-indigo-100 text-indigo-800"
+                                className="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200"
                               >
                                 {permission.replace('_', ' ')}
                               </span>
@@ -318,14 +318,14 @@ export default function ApiKeysPage() {
 
                         {/* Display key value if it's a new key or just regenerated */}
                         {(showingKey === key._id && key.key) && (
-                          <div className="bg-gray-50 p-3 rounded-md">
+                          <div className="bg-gray-50 dark:bg-gray-900 p-3 rounded-md">
                             <div className="flex items-center justify-between">
-                              <div className="text-sm text-gray-900 font-mono overflow-x-auto max-w-lg">
+                              <div className="text-sm text-gray-900 dark:text-white font-mono overflow-x-auto max-w-lg">
                                 {key.key}
                               </div>
                               <button
                                 onClick={() => handleCopyKey(key.key!)}
-                                className="p-1 rounded-md text-gray-600 hover:text-gray-700 hover:bg-gray-100"
+                                className="p-1 rounded-md text-gray-600 hover:text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-gray-300 dark:hover:bg-gray-800"
                                 title="Copy to clipboard"
                               >
                                 <ClipboardIcon className="h-5 w-5" />
@@ -338,11 +338,11 @@ export default function ApiKeysPage() {
                         )}
 
                         <div className="flex items-center text-sm">
-                          <div className="text-gray-500">
-                            <span className="font-medium text-gray-900">{(key.totalTokens || 0).toLocaleString()}</span>{' '}
+                          <div className="text-gray-500 dark:text-gray-400">
+                            <span className="font-medium text-gray-900 dark:text-white">{(key.totalTokens || 0).toLocaleString()}</span>{' '}
                             tokens used
                             {(key.totalImages || 0) > 0 && (
-                              <> • <span className="font-medium text-gray-900">{(key.totalImages || 0).toLocaleString()}</span> images generated</>
+                              <> • <span className="font-medium text-gray-900 dark:text-white">{(key.totalImages || 0).toLocaleString()}</span> images generated</>
                             )}
                           </div>
                         </div>

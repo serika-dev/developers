@@ -170,7 +170,7 @@ export default function Dashboard() {
         </div>
 
         <Card title="Getting Started">
-          <div className="prose max-w-none">
+          <div className="prose max-w-none dark:prose-invert">
             <p className="text-gray-900 dark:text-white">
               Welcome to the Serika.dev API Developer Portal. Here you can manage your API keys,
               monitor usage, and explore our API capabilities.

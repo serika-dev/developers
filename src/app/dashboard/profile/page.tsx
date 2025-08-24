@@ -53,8 +53,8 @@ export default function ProfilePage() {
       <DashboardLayout title="Profile">
         <div className="max-w-7xl mx-auto pb-6">
           <div className="animate-pulse space-y-4">
-            <div className="h-4 bg-gray-200 rounded w-3/4"></div>
-            <div className="h-4 bg-gray-200 rounded w-1/2"></div>
+            <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-3/4"></div>
+            <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-1/2"></div>
           </div>
         </div>
       </DashboardLayout>
@@ -66,7 +66,7 @@ export default function ProfilePage() {
       <div className="max-w-7xl mx-auto pb-6">
         <div className="grid grid-cols-1 gap-6">
           {error && (
-            <div className="bg-red-50 border-l-4 border-red-400 p-4">
+            <div className="bg-red-50 dark:bg-red-900/50 border-l-4 border-red-400 p-4">
               <div className="flex">
                 <div className="flex-shrink-0">
                   <svg className="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
@@ -74,7 +74,7 @@ export default function ProfilePage() {
                   </svg>
                 </div>
                 <div className="ml-3">
-                  <p className="text-sm text-red-700">{error}</p>
+                  <p className="text-sm text-red-700 dark:text-red-200">{error}</p>
                 </div>
               </div>
             </div>
@@ -94,13 +94,13 @@ export default function ProfilePage() {
                       className="h-full w-full object-cover"
                     />
                   ) : (
-                    <div className="h-full w-full bg-gray-200 flex items-center justify-center">
-                      <span className="text-4xl text-gray-500">{user?.username?.[0]?.toUpperCase()}</span>
+                    <div className="h-full w-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
+                      <span className="text-4xl text-gray-500 dark:text-gray-300">{user?.username?.[0]?.toUpperCase()}</span>
                     </div>
                   )}
                   <label
                     htmlFor="avatar-upload"
-                    className={`absolute bottom-0 right-0 bg-white rounded-full p-1 shadow-lg cursor-pointer hover:bg-gray-50 ${uploading ? 'opacity-50' : ''}`}
+                    className={`absolute bottom-0 right-0 bg-white dark:bg-gray-800 rounded-full p-1 shadow-lg cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700 ${uploading ? 'opacity-50' : ''}`}
                   >
                     <input
                       id="avatar-upload"
@@ -140,12 +140,12 @@ export default function ProfilePage() {
                   </label>
                 </div>
                 <div>
-                  <h3 className="text-lg font-medium text-gray-900">{user?.username}</h3>
-                  <p className="text-sm text-gray-500">{user?.email}</p>
-                  <p className="text-sm text-gray-500">
+                  <h3 className="text-lg font-medium text-gray-900 dark:text-white">{user?.username}</h3>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">{user?.email}</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
                     Joined {new Date(user?.joinDate || '').toLocaleDateString()}
                   </p>
-                  <p className="text-sm text-gray-500">
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
                     {user?.apiSubscriptionStatus === 'active' ? 
                       <span className="text-green-600 font-medium">Active Billing Setup</span> : 
                       'No active billing setup'}
@@ -159,27 +159,27 @@ export default function ProfilePage() {
           <Card title="Account Settings">
             <div className="p-6 space-y-6">
               <div>
-                <label htmlFor="username" className="block text-sm font-medium text-gray-700">
+                <label htmlFor="username" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                   Username
                 </label>
                 <input
                   type="text"
                   name="username"
                   id="username"
-                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                  className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
                   value={user?.username}
                   readOnly
                 />
               </div>
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                   Email
                 </label>
                 <input
                   type="email"
                   name="email"
                   id="email"
-                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                  className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
                   value={user?.email}
                   readOnly
                 />
@@ -191,15 +191,15 @@ export default function ProfilePage() {
           <Card title="API Usage">
             <div className="p-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="p-4 bg-gray-50 rounded-lg">
-                  <h4 className="text-sm font-medium text-gray-500">Message Count</h4>
-                  <p className="mt-2 text-3xl font-semibold text-gray-900">
+                <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                  <h4 className="text-sm font-medium text-gray-500 dark:text-gray-400">Message Count</h4>
+                  <p className="mt-2 text-3xl font-semibold text-gray-900 dark:text-white">
                     {user?.messageCount?.total?.toLocaleString() || 0}
                   </p>
                 </div>
-                <div className="p-4 bg-gray-50 rounded-lg">
-                  <h4 className="text-sm font-medium text-gray-500">Image Count</h4>
-                  <p className="mt-2 text-3xl font-semibold text-gray-900">
+                <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                  <h4 className="text-sm font-medium text-gray-500 dark:text-gray-400">Image Count</h4>
+                  <p className="mt-2 text-3xl font-semibold text-gray-900 dark:text-white">
                     {user?.imageCount?.total?.toLocaleString() || 0}
                   </p>
                 </div>
