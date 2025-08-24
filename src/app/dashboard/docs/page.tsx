@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
 import React from 'react';
@@ -5,10 +6,10 @@ import DashboardLayout from '@/app/components/layout/DashboardLayout';
 import Card from '@/app/components/ui/Card';
 import { Tab } from '@headlessui/react';
 import { CodeBracketIcon, ChatBubbleLeftIcon, PhotoIcon, UserIcon } from '@heroicons/react/24/outline';
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
-import SyntaxHighlighter from 'react-syntax-highlighter/dist/cjs/prism';
-// @ts-ignore
-import { atomDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+/* eslint-enable @typescript-eslint/ban-ts-comment */
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ');
@@ -25,7 +26,7 @@ export default function DocsPage() {
           <p>
             The Serika.dev API provides a comprehensive set of endpoints for text generation,
             image generation, character interaction, and API management. Our API is compatible with
-            OpenAI's format while offering additional features like character-based responses and
+            OpenAI&apos;s format while offering additional features like character-based responses and
             advanced image generation models.
           </p>
 
@@ -34,7 +35,7 @@ export default function DocsPage() {
             The API uses bearer token authentication. Include your API key in the Authorization
             header of your requests:
           </p>
-          <SyntaxHighlighter language="bash" style={atomDark}>
+          <SyntaxHighlighter language="bash" style={{backgroundColor: '#1e1e1e'} as any}>
             {`curl https://api.serika.dev/api/openai/v1/chat/completions \\
   -H "Authorization: Bearer sk-your-api-key" \\
   -H "Content-Type: application/json"`}
@@ -72,7 +73,7 @@ export default function DocsPage() {
 
           <h3>Error Handling</h3>
           <p>The API returns standard HTTP status codes and JSON error responses:</p>
-          <SyntaxHighlighter language="json" style={atomDark}>
+          <SyntaxHighlighter language="json" style={{backgroundColor: '#1e1e1e'} as any}>
             {`{
   "error": {
     "message": "API key does not have image_generation permission",
@@ -129,7 +130,7 @@ export default function DocsPage() {
 
           <h3>POST /v1/chat/completions</h3>
           <p>OpenAI-compatible chat completions endpoint with enhanced features:</p>
-          <SyntaxHighlighter language="javascript" style={atomDark}>
+          <SyntaxHighlighter language="javascript" style={{backgroundColor: '#1e1e1e'} as any}>
             {`{
   "messages": [
     {"role": "user", "content": "Hello, how are you?"}
@@ -148,13 +149,13 @@ export default function DocsPage() {
             <li><code>model</code> (optional): Model ID to use (default: gpt-4o)</li>
             <li><code>temperature</code> (optional): Randomness control (0.0-1.0, default: 0.7)</li>
             <li><code>stream</code> (optional): Enable streaming response (default: false)</li>
-            <li><code>character_id</code> (optional): Use a specific character's personality</li>
+            <li><code>character_id</code> (optional): Use a specific character&apos;s personality</li>
             <li><code>system_prompt</code> (optional): Override or supplement character system prompt</li>
           </ul>
 
           <h3>POST /v1/responses</h3>
           <p>Alternative endpoint supporting both single input and conversation format:</p>
-          <SyntaxHighlighter language="javascript" style={atomDark}>
+          <SyntaxHighlighter language="javascript" style={{backgroundColor: '#1e1e1e'} as any}>
             {`// Single input format
 {
   "input": "Explain quantum computing in simple terms",
@@ -177,7 +178,7 @@ export default function DocsPage() {
           <p>Legacy endpoint for text generation, maintained for backward compatibility.</p>
 
           <h3>Response Format</h3>
-          <SyntaxHighlighter language="javascript" style={atomDark}>
+          <SyntaxHighlighter language="javascript" style={{backgroundColor: '#1e1e1e'} as any}>
             {`{
   "id": "chatcmpl-123abc",
   "object": "chat.completion",
@@ -203,7 +204,7 @@ export default function DocsPage() {
 
           <h3>Streaming Responses</h3>
           <p>When <code>stream: true</code>, responses are sent as Server-Sent Events:</p>
-          <SyntaxHighlighter language="javascript" style={atomDark}>
+          <SyntaxHighlighter language="javascript" style={{backgroundColor: '#1e1e1e'} as any}>
             {`data: {"id":"chatcmpl-123","object":"chat.completion.chunk","created":1702587897,"model":"gpt-4o","choices":[{"index":0,"delta":{"content":"Hello"},"finish_reason":null}]}
 
 data: {"id":"chatcmpl-123","object":"chat.completion.chunk","created":1702587897,"model":"gpt-4o","choices":[{"index":0,"delta":{"content":"!"},"finish_reason":"stop"}]}
@@ -260,7 +261,7 @@ data: [DONE]`}
 
           <h3>POST /v1/images/generations</h3>
           <p>OpenAI-compatible image generation endpoint with enhanced parameters:</p>
-          <SyntaxHighlighter language="javascript" style={atomDark}>
+          <SyntaxHighlighter language="javascript" style={{backgroundColor: '#1e1e1e'} as any}>
             {`{
   "prompt": "A majestic dragon soaring through clouds at sunset, digital art",
   "model": "nai-diffusion-3",
@@ -280,7 +281,7 @@ data: [DONE]`}
             <li><code>prompt</code> (required): Text description of the desired image</li>
             <li><code>model</code> (optional): Image model to use (default: nai-diffusion-3)</li>
             <li><code>n</code> (optional): Number of images to generate (1-10, default: 1)</li>
-            <li><code>size</code> (optional): Image dimensions (e.g., "1024x1024")</li>
+            <li><code>size</code> (optional): Image dimensions (e.g., &quot;1024x1024&quot;)</li>
             <li><code>negative_prompt</code> (optional): Elements to avoid in the image</li>
             <li><code>steps</code> (optional): Number of generation steps (10-50)</li>
             <li><code>scale</code> (optional): CFG scale for prompt adherence (1-20)</li>
@@ -294,13 +295,13 @@ data: [DONE]`}
 
           <h3>DELETE /v1/images/:imageId</h3>
           <p>Delete a generated image (only images you created):</p>
-          <SyntaxHighlighter language="bash" style={atomDark}>
+          <SyntaxHighlighter language="bash" style={{backgroundColor: '#1e1e1e'} as any}>
             {`curl -X DELETE https://api.serika.dev/api/openai/v1/images/your-image-id \\
   -H "Authorization: Bearer sk-your-api-key"`}
           </SyntaxHighlighter>
 
           <h3>Response Format</h3>
-          <SyntaxHighlighter language="javascript" style={atomDark}>
+          <SyntaxHighlighter language="javascript" style={{backgroundColor: '#1e1e1e'} as any}>
             {`{
   "created": 1702587897,
   "data": [
@@ -336,26 +337,26 @@ data: [DONE]`}
         <div className="prose max-w-none">
           <h2>Characters API</h2>
           <p>
-            Access and interact with Serika's character database. Characters provide personality,
+            Access and interact with Serika&apos;s character database. Characters provide personality,
             speaking style, and context to text generation requests.
           </p>
 
           <h3>GET /v1/characters</h3>
           <p>List all public characters (requires <code>character_info</code> permission):</p>
-          <SyntaxHighlighter language="bash" style={atomDark}>
+          <SyntaxHighlighter language="bash" style={{backgroundColor: '#1e1e1e'} as any}>
             {`curl https://api.serika.dev/api/openai/v1/characters \\
   -H "Authorization: Bearer sk-your-api-key"`}
           </SyntaxHighlighter>
 
           <h3>GET /v1/characters/:id</h3>
           <p>Get detailed information about a specific character:</p>
-          <SyntaxHighlighter language="bash" style={atomDark}>
+          <SyntaxHighlighter language="bash" style={{backgroundColor: '#1e1e1e'} as any}>
             {`curl https://api.serika.dev/api/openai/v1/characters/character-uuid \\
   -H "Authorization: Bearer sk-your-api-key"`}
           </SyntaxHighlighter>
 
           <h3>Character Response Format</h3>
-          <SyntaxHighlighter language="javascript" style={atomDark}>
+          <SyntaxHighlighter language="javascript" style={{backgroundColor: '#1e1e1e'} as any}>
             {`{
   "id": "character-uuid",
   "name": "Character Name",
@@ -372,7 +373,7 @@ data: [DONE]`}
 
           <h3>Using Characters in Text Generation</h3>
           <p>Include the <code>character_id</code> parameter in text generation requests:</p>
-          <SyntaxHighlighter language="javascript" style={atomDark}>
+          <SyntaxHighlighter language="javascript" style={{backgroundColor: '#1e1e1e'} as any}>
             {`{
   "messages": [
     {"role": "user", "content": "Hello! How are you today?"}
@@ -388,7 +389,7 @@ data: [DONE]`}
 
           <h3>POST /v1/keys</h3>
           <p>Create a new API key (requires authentication):</p>
-          <SyntaxHighlighter language="javascript" style={atomDark}>
+          <SyntaxHighlighter language="javascript" style={{backgroundColor: '#1e1e1e'} as any}>
             {`{
   "name": "My Project Key"
 }`}
@@ -399,7 +400,7 @@ data: [DONE]`}
 
           <h3>PUT /v1/keys/:id/permissions</h3>
           <p>Update API key permissions:</p>
-          <SyntaxHighlighter language="javascript" style={atomDark}>
+          <SyntaxHighlighter language="javascript" style={{backgroundColor: '#1e1e1e'} as any}>
             {`{
   "permissions": [
     "text_generation",
@@ -422,7 +423,7 @@ data: [DONE]`}
 
           <h3>GET /v1/usage</h3>
           <p>Get detailed usage statistics:</p>
-          <SyntaxHighlighter language="bash" style={atomDark}>
+          <SyntaxHighlighter language="bash" style={{backgroundColor: '#1e1e1e'} as any}>
             {`curl "https://api.serika.dev/api/openai/v1/usage?startDate=2024-01-01&endDate=2024-01-31" \\
   -H "Authorization: Bearer your-session-token"`}
           </SyntaxHighlighter>
@@ -431,7 +432,7 @@ data: [DONE]`}
           <p>Setup usage-based billing for API access</p>
 
           <h3>Usage Response Format</h3>
-          <SyntaxHighlighter language="javascript" style={atomDark}>
+          <SyntaxHighlighter language="javascript" style={{backgroundColor: '#1e1e1e'} as any}>
             {`{
   "summary": {
     "totalTokens": 50000,
@@ -690,13 +691,13 @@ data: [DONE]`}
             <li><code>400</code> - Bad Request (invalid parameters)</li>
             <li><code>401</code> - Unauthorized (invalid API key)</li>
             <li><code>403</code> - Forbidden (insufficient permissions)</li>
-            <li><code>404</code> - Not Found (resource doesn't exist)</li>
+            <li><code>404</code> - Not Found (resource doesn&apos;t exist)</li>
             <li><code>500</code> - Internal Server Error</li>
           </ul>
 
           <h3>SDKs and Libraries</h3>
           <p>The API is compatible with OpenAI SDKs. Simply change the base URL:</p>
-          <SyntaxHighlighter language="javascript" style={atomDark}>
+          <SyntaxHighlighter language="javascript" style={{backgroundColor: '#1e1e1e'} as any}>
             {`// JavaScript/Node.js
 const OpenAI = require('openai');
 const client = new OpenAI({

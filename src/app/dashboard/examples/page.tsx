@@ -1,13 +1,14 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
 import React from 'react';
 import DashboardLayout from '@/app/components/layout/DashboardLayout';
 import Card from '@/app/components/ui/Card';
 import { Tab } from '@headlessui/react';
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
-import SyntaxHighlighter from 'react-syntax-highlighter/dist/cjs/prism';
-// @ts-ignore
-import { atomDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+/* eslint-enable @typescript-eslint/ban-ts-comment */
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ');
@@ -126,7 +127,7 @@ generate_text()`,
                   <div className="mt-4 relative">
                     <SyntaxHighlighter
                       language={example.name.toLowerCase()}
-                      style={atomDark}
+                      style={{backgroundColor: '#1e1e1e'} as any}
                       customStyle={{ margin: 0 }}
                     >
                       {example.code}

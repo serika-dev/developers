@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
 import React, { useEffect, useState } from 'react';
@@ -9,11 +10,11 @@ import { getModels, generateText, generateImage, getCharacters, setStoredApiKey,
 import { Model, Character, GenerationRequest, ImageGenerationRequest } from '@/app/types';
 import { ArrowPathIcon, KeyIcon, ClipboardIcon } from '@heroicons/react/24/outline';
 import Editor from '@monaco-editor/react';
-// @ts-ignore
-import SyntaxHighlighter from 'react-syntax-highlighter/dist/cjs/prism';
-// @ts-ignore
-import { atomDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import Image from 'next/image';
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-ignore
+import SyntaxHighlighter from 'react-syntax-highlighter';
+/* eslint-enable @typescript-eslint/ban-ts-comment */
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ');
@@ -665,7 +666,7 @@ export default function PlaygroundPage() {
                   </div>
                   
                   <div className="bg-gray-800 dark:bg-gray-900 rounded-md overflow-hidden">
-                    <SyntaxHighlighter language={language} style={atomDark} showLineNumbers>
+                    <SyntaxHighlighter language={language} style={{backgroundColor: '#1e1e1e'} as any} showLineNumbers>
                       {codeExamples[language as keyof typeof codeExamples]}
                     </SyntaxHighlighter>
                     <div className="flex justify-end p-2 bg-gray-700 dark:bg-gray-800">
