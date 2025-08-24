@@ -10,7 +10,7 @@ import { Model, Character, GenerationRequest, ImageGenerationRequest } from '@/a
 import { ArrowPathIcon, KeyIcon, ClipboardIcon } from '@heroicons/react/24/outline';
 import Editor from '@monaco-editor/react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { atomDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import Image from 'next/image';
 
 function classNames(...classes: string[]) {
@@ -235,15 +235,15 @@ export default function PlaygroundPage() {
         </div>
         
         <Tab.Group selectedIndex={activeTab} onChange={setActiveTab}>
-          <Tab.List className="flex rounded-xl bg-gray-100 p-1">
+          <Tab.List className="flex rounded-xl bg-gray-100 dark:bg-gray-800 p-1">
             <Tab
               className={({ selected }) =>
                 classNames(
                   'w-full rounded-lg py-2.5 text-sm font-medium leading-5',
                   'ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2',
                   selected
-                    ? 'bg-white shadow text-indigo-700'
-                    : 'text-gray-500 hover:bg-white/[0.12] hover:text-gray-700'
+                    ? 'bg-white dark:bg-gray-900 shadow text-indigo-700 dark:text-indigo-400'
+                    : 'text-gray-500 dark:text-gray-400 hover:bg-white/[0.12] dark:hover:bg-gray-700/[0.12] hover:text-gray-700 dark:hover:text-gray-300'
                 )
               }
             >
@@ -255,8 +255,8 @@ export default function PlaygroundPage() {
                   'w-full rounded-lg py-2.5 text-sm font-medium leading-5',
                   'ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2',
                   selected
-                    ? 'bg-white shadow text-indigo-700'
-                    : 'text-gray-500 hover:bg-white/[0.12] hover:text-gray-700'
+                    ? 'bg-white dark:bg-gray-900 shadow text-indigo-700 dark:text-indigo-400'
+                    : 'text-gray-500 dark:text-gray-400 hover:bg-white/[0.12] dark:hover:bg-gray-700/[0.12] hover:text-gray-700 dark:hover:text-gray-300'
                 )
               }
             >
@@ -268,8 +268,8 @@ export default function PlaygroundPage() {
                   'w-full rounded-lg py-2.5 text-sm font-medium leading-5',
                   'ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2',
                   selected
-                    ? 'bg-white shadow text-indigo-700'
-                    : 'text-gray-500 hover:bg-white/[0.12] hover:text-gray-700'
+                    ? 'bg-white dark:bg-gray-900 shadow text-indigo-700 dark:text-indigo-400'
+                    : 'text-gray-500 dark:text-gray-400 hover:bg-white/[0.12] dark:hover:bg-gray-700/[0.12] hover:text-gray-700 dark:hover:text-gray-300'
                 )
               }
             >
@@ -419,8 +419,8 @@ export default function PlaygroundPage() {
                       <span className="ml-2">Generating response...</span>
                     </div>
                   ) : response ? (
-                    <div className="h-[calc(100vh-350px)] overflow-y-auto p-4 bg-gray-50 rounded-md">
-                      <div className="prose max-w-none">
+                    <div className="h-[calc(100vh-350px)] overflow-y-auto p-4 bg-gray-50 dark:bg-gray-900 rounded-md">
+                      <div className="prose max-w-none dark:prose-invert">
                         {response.split('\n').map((line, i) => (
                           <React.Fragment key={i}>
                             {line}
@@ -662,11 +662,11 @@ export default function PlaygroundPage() {
                     </select>
                   </div>
                   
-                  <div className="bg-gray-800 rounded-md overflow-hidden">
+                  <div className="bg-gray-800 dark:bg-gray-900 rounded-md overflow-hidden">
                     <SyntaxHighlighter language={language} style={atomDark} showLineNumbers>
                       {codeExamples[language as keyof typeof codeExamples]}
                     </SyntaxHighlighter>
-                    <div className="flex justify-end p-2 bg-gray-700">
+                    <div className="flex justify-end p-2 bg-gray-700 dark:bg-gray-800">
                       <button
                         onClick={() => {
                           navigator.clipboard.writeText(codeExamples[language as keyof typeof codeExamples]);

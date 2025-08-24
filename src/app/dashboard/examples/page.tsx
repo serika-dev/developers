@@ -5,7 +5,7 @@ import DashboardLayout from '@/app/components/layout/DashboardLayout';
 import Card from '@/app/components/ui/Card';
 import { Tab } from '@headlessui/react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { atomDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ');
@@ -96,7 +96,7 @@ generate_text()`,
       <div className="max-w-7xl mx-auto pb-6">
         <Card>
           <Tab.Group>
-            <Tab.List className="flex space-x-1 border-b border-gray-200 px-6">
+            <Tab.List className="flex space-x-1 border-b border-gray-200 dark:border-gray-700 px-6">
               {Object.values(examples).map((example) => (
                 <Tab
                   key={example.name}
@@ -105,8 +105,8 @@ generate_text()`,
                       'py-4 px-6 text-sm font-medium',
                       'focus:outline-none',
                       selected
-                        ? 'border-b-2 border-indigo-500 text-indigo-600'
-                        : 'text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                        ? 'border-b-2 border-indigo-500 text-indigo-600 dark:text-indigo-400'
+                        : 'text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-300 dark:hover:border-gray-600'
                     )
                   }
                 >
@@ -134,7 +134,7 @@ generate_text()`,
                         navigator.clipboard.writeText(example.code);
                         // You can add a toast notification here
                       }}
-                      className="absolute top-4 right-4 p-2 bg-gray-800 rounded text-gray-300 hover:text-white"
+                      className="absolute top-4 right-4 p-2 bg-gray-800 dark:bg-gray-700 rounded text-gray-300 hover:text-white"
                     >
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                         <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" />
