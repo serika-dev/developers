@@ -666,7 +666,7 @@ export default function PlaygroundPage() {
                   </div>
                   
                   <div className="bg-gray-800 dark:bg-gray-900 rounded-md overflow-hidden">
-                    <SyntaxHighlighter language={language} style={{backgroundColor: '#1e1e1e'} as any} showLineNumbers>
+                    <SyntaxHighlighter language={language} style={{backgroundColor: '#1e1e1e', color: '#f8f8f2', padding: '1rem', borderRadius: '0.5rem'} as any} showLineNumbers>
                       {codeExamples[language as keyof typeof codeExamples]}
                     </SyntaxHighlighter>
                     <div className="flex justify-end p-2 bg-gray-700 dark:bg-gray-800">

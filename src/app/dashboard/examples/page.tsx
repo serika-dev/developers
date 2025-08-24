@@ -127,7 +127,7 @@ generate_text()`,
                   <div className="mt-4 relative">
                     <SyntaxHighlighter
                       language={example.name.toLowerCase()}
-                      style={{backgroundColor: '#1e1e1e'} as any}
+                      style={{backgroundColor: '#1e1e1e', color: '#f8f8f2', padding: '1rem', borderRadius: '0.5rem'} as any}
                       customStyle={{ margin: 0 }}
                     >
                       {example.code}

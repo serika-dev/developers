@@ -35,7 +35,7 @@ export default function DocsPage() {
             The API uses bearer token authentication. Include your API key in the Authorization
             header of your requests:
           </p>
-          <SyntaxHighlighter language="bash" style={{backgroundColor: '#1e1e1e'} as any}>
+          <SyntaxHighlighter language="bash" style={{backgroundColor: '#1e1e1e', color: '#f8f8f2', padding: '1rem', borderRadius: '0.5rem'} as any}>
             {`curl https://api.serika.dev/api/openai/v1/chat/completions \\
   -H "Authorization: Bearer sk-your-api-key" \\
   -H "Content-Type: application/json"`}
@@ -73,7 +73,7 @@ export default function DocsPage() {
 
           <h3>Error Handling</h3>
           <p>The API returns standard HTTP status codes and JSON error responses:</p>
-          <SyntaxHighlighter language="json" style={{backgroundColor: '#1e1e1e'} as any}>
+          <SyntaxHighlighter language="json" style={{backgroundColor: '#1e1e1e', color: '#f8f8f2', padding: '1rem', borderRadius: '0.5rem'} as any}>
             {`{
   "error": {
     "message": "API key does not have image_generation permission",
@@ -130,7 +130,7 @@ export default function DocsPage() {
 
           <h3>POST /v1/chat/completions</h3>
           <p>OpenAI-compatible chat completions endpoint with enhanced features:</p>
-          <SyntaxHighlighter language="javascript" style={{backgroundColor: '#1e1e1e'} as any}>
+          <SyntaxHighlighter language="javascript" style={{backgroundColor: '#1e1e1e', color: '#f8f8f2', padding: '1rem', borderRadius: '0.5rem'} as any}>
             {`{
   "messages": [
     {"role": "user", "content": "Hello, how are you?"}
@@ -155,7 +155,7 @@ export default function DocsPage() {
 
           <h3>POST /v1/responses</h3>
           <p>Alternative endpoint supporting both single input and conversation format:</p>
-          <SyntaxHighlighter language="javascript" style={{backgroundColor: '#1e1e1e'} as any}>
+          <SyntaxHighlighter language="javascript" style={{backgroundColor: '#1e1e1e', color: '#f8f8f2', padding: '1rem', borderRadius: '0.5rem'} as any}>
             {`// Single input format
 {
   "input": "Explain quantum computing in simple terms",
@@ -178,7 +178,7 @@ export default function DocsPage() {
           <p>Legacy endpoint for text generation, maintained for backward compatibility.</p>
 
           <h3>Response Format</h3>
-          <SyntaxHighlighter language="javascript" style={{backgroundColor: '#1e1e1e'} as any}>
+          <SyntaxHighlighter language="javascript" style={{backgroundColor: '#1e1e1e', color: '#f8f8f2', padding: '1rem', borderRadius: '0.5rem'} as any}>
             {`{
   "id": "chatcmpl-123abc",
   "object": "chat.completion",
@@ -204,7 +204,7 @@ export default function DocsPage() {
 
           <h3>Streaming Responses</h3>
           <p>When <code>stream: true</code>, responses are sent as Server-Sent Events:</p>
-          <SyntaxHighlighter language="javascript" style={{backgroundColor: '#1e1e1e'} as any}>
+          <SyntaxHighlighter language="javascript" style={{backgroundColor: '#1e1e1e', color: '#f8f8f2', padding: '1rem', borderRadius: '0.5rem'} as any}>
             {`data: {"id":"chatcmpl-123","object":"chat.completion.chunk","created":1702587897,"model":"gpt-4o","choices":[{"index":0,"delta":{"content":"Hello"},"finish_reason":null}]}
 
 data: {"id":"chatcmpl-123","object":"chat.completion.chunk","created":1702587897,"model":"gpt-4o","choices":[{"index":0,"delta":{"content":"!"},"finish_reason":"stop"}]}
@@ -261,7 +261,7 @@ data: [DONE]`}
 
           <h3>POST /v1/images/generations</h3>
           <p>OpenAI-compatible image generation endpoint with enhanced parameters:</p>
-          <SyntaxHighlighter language="javascript" style={{backgroundColor: '#1e1e1e'} as any}>
+          <SyntaxHighlighter language="javascript" style={{backgroundColor: '#1e1e1e', color: '#f8f8f2', padding: '1rem', borderRadius: '0.5rem'} as any}>
             {`{
   "prompt": "A majestic dragon soaring through clouds at sunset, digital art",
   "model": "nai-diffusion-3",
@@ -295,13 +295,13 @@ data: [DONE]`}
 
           <h3>DELETE /v1/images/:imageId</h3>
           <p>Delete a generated image (only images you created):</p>
-          <SyntaxHighlighter language="bash" style={{backgroundColor: '#1e1e1e'} as any}>
+          <SyntaxHighlighter language="bash" style={{backgroundColor: '#1e1e1e', color: '#f8f8f2', padding: '1rem', borderRadius: '0.5rem'} as any}>
             {`curl -X DELETE https://api.serika.dev/api/openai/v1/images/your-image-id \\
   -H "Authorization: Bearer sk-your-api-key"`}
           </SyntaxHighlighter>
 
           <h3>Response Format</h3>
-          <SyntaxHighlighter language="javascript" style={{backgroundColor: '#1e1e1e'} as any}>
+          <SyntaxHighlighter language="javascript" style={{backgroundColor: '#1e1e1e', color: '#f8f8f2', padding: '1rem', borderRadius: '0.5rem'} as any}>
             {`{
   "created": 1702587897,
   "data": [
@@ -343,20 +343,20 @@ data: [DONE]`}
 
           <h3>GET /v1/characters</h3>
           <p>List all public characters (requires <code>character_info</code> permission):</p>
-          <SyntaxHighlighter language="bash" style={{backgroundColor: '#1e1e1e'} as any}>
+          <SyntaxHighlighter language="bash" style={{backgroundColor: '#1e1e1e', color: '#f8f8f2', padding: '1rem', borderRadius: '0.5rem'} as any}>
             {`curl https://api.serika.dev/api/openai/v1/characters \\
   -H "Authorization: Bearer sk-your-api-key"`}
           </SyntaxHighlighter>
 
           <h3>GET /v1/characters/:id</h3>
           <p>Get detailed information about a specific character:</p>
-          <SyntaxHighlighter language="bash" style={{backgroundColor: '#1e1e1e'} as any}>
+          <SyntaxHighlighter language="bash" style={{backgroundColor: '#1e1e1e', color: '#f8f8f2', padding: '1rem', borderRadius: '0.5rem'} as any}>
             {`curl https://api.serika.dev/api/openai/v1/characters/character-uuid \\
   -H "Authorization: Bearer sk-your-api-key"`}
           </SyntaxHighlighter>
 
           <h3>Character Response Format</h3>
-          <SyntaxHighlighter language="javascript" style={{backgroundColor: '#1e1e1e'} as any}>
+          <SyntaxHighlighter language="javascript" style={{backgroundColor: '#1e1e1e', color: '#f8f8f2', padding: '1rem', borderRadius: '0.5rem'} as any}>
             {`{
   "id": "character-uuid",
   "name": "Character Name",
@@ -373,7 +373,7 @@ data: [DONE]`}
 
           <h3>Using Characters in Text Generation</h3>
           <p>Include the <code>character_id</code> parameter in text generation requests:</p>
-          <SyntaxHighlighter language="javascript" style={{backgroundColor: '#1e1e1e'} as any}>
+          <SyntaxHighlighter language="javascript" style={{backgroundColor: '#1e1e1e', color: '#f8f8f2', padding: '1rem', borderRadius: '0.5rem'} as any}>
             {`{
   "messages": [
     {"role": "user", "content": "Hello! How are you today?"}
@@ -389,7 +389,7 @@ data: [DONE]`}
 
           <h3>POST /v1/keys</h3>
           <p>Create a new API key (requires authentication):</p>
-          <SyntaxHighlighter language="javascript" style={{backgroundColor: '#1e1e1e'} as any}>
+          <SyntaxHighlighter language="javascript" style={{backgroundColor: '#1e1e1e', color: '#f8f8f2', padding: '1rem', borderRadius: '0.5rem'} as any}>
             {`{
   "name": "My Project Key"
 }`}
@@ -400,7 +400,7 @@ data: [DONE]`}
 
           <h3>PUT /v1/keys/:id/permissions</h3>
           <p>Update API key permissions:</p>
-          <SyntaxHighlighter language="javascript" style={{backgroundColor: '#1e1e1e'} as any}>
+          <SyntaxHighlighter language="javascript" style={{backgroundColor: '#1e1e1e', color: '#f8f8f2', padding: '1rem', borderRadius: '0.5rem'} as any}>
             {`{
   "permissions": [
     "text_generation",
@@ -423,7 +423,7 @@ data: [DONE]`}
 
           <h3>GET /v1/usage</h3>
           <p>Get detailed usage statistics:</p>
-          <SyntaxHighlighter language="bash" style={{backgroundColor: '#1e1e1e'} as any}>
+          <SyntaxHighlighter language="bash" style={{backgroundColor: '#1e1e1e', color: '#f8f8f2', padding: '1rem', borderRadius: '0.5rem'} as any}>
             {`curl "https://api.serika.dev/api/openai/v1/usage?startDate=2024-01-01&endDate=2024-01-31" \\
   -H "Authorization: Bearer your-session-token"`}
           </SyntaxHighlighter>
@@ -432,7 +432,7 @@ data: [DONE]`}
           <p>Setup usage-based billing for API access</p>
 
           <h3>Usage Response Format</h3>
-          <SyntaxHighlighter language="javascript" style={{backgroundColor: '#1e1e1e'} as any}>
+          <SyntaxHighlighter language="javascript" style={{backgroundColor: '#1e1e1e', color: '#f8f8f2', padding: '1rem', borderRadius: '0.5rem'} as any}>
             {`{
   "summary": {
     "totalTokens": 50000,
@@ -697,7 +697,7 @@ data: [DONE]`}
 
           <h3>SDKs and Libraries</h3>
           <p>The API is compatible with OpenAI SDKs. Simply change the base URL:</p>
-          <SyntaxHighlighter language="javascript" style={{backgroundColor: '#1e1e1e'} as any}>
+          <SyntaxHighlighter language="javascript" style={{backgroundColor: '#1e1e1e', color: '#f8f8f2', padding: '1rem', borderRadius: '0.5rem'} as any}>
             {`// JavaScript/Node.js
 const OpenAI = require('openai');
 const client = new OpenAI({
