@@ -5,8 +5,10 @@ import DashboardLayout from '@/app/components/layout/DashboardLayout';
 import Card from '@/app/components/ui/Card';
 import { Tab } from '@headlessui/react';
 import { CodeBracketIcon, ChatBubbleLeftIcon, PhotoIcon, UserIcon } from '@heroicons/react/24/outline';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import atomDark from 'react-syntax-highlighter/dist/esm/styles/prism/atom-dark';
+// @ts-ignore
+import SyntaxHighlighter from 'react-syntax-highlighter/dist/cjs/prism';
+// @ts-ignore
+import { atomDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ');

@@ -9,8 +9,10 @@ import { getModels, generateText, generateImage, getCharacters, setStoredApiKey,
 import { Model, Character, GenerationRequest, ImageGenerationRequest } from '@/app/types';
 import { ArrowPathIcon, KeyIcon, ClipboardIcon } from '@heroicons/react/24/outline';
 import Editor from '@monaco-editor/react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import atomDark from 'react-syntax-highlighter/dist/esm/styles/prism/atom-dark';
+// @ts-ignore
+import SyntaxHighlighter from 'react-syntax-highlighter/dist/cjs/prism';
+// @ts-ignore
+import { atomDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import Image from 'next/image';
 
 function classNames(...classes: string[]) {
