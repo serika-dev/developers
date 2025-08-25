@@ -21,7 +21,7 @@ export default function DocsPage() {
       name: 'Overview',
       icon: CodeBracketIcon,
       content: (
-        <div className="prose max-w-none">
+        <div className="prose max-w-none dark:prose-invert">
           <h2>Introduction</h2>
           <p>
             The Serika.dev API provides a comprehensive set of endpoints for text generation,
@@ -90,7 +90,7 @@ export default function DocsPage() {
       name: 'Text Generation',
       icon: ChatBubbleLeftIcon,
       content: (
-        <div className="prose max-w-none">
+        <div className="prose max-w-none dark:prose-invert">
           <h2>Text Generation APIs</h2>
           <p>
             Generate text using advanced language models with support for streaming,
@@ -218,7 +218,7 @@ data: [DONE]`}
       name: 'Image Generation',
       icon: PhotoIcon,
       content: (
-        <div className="prose max-w-none">
+        <div className="prose max-w-none dark:prose-invert">
           <h2>Image Generation API</h2>
           <p>
             Generate high-quality images using multiple providers including NovelAI, OpenAI DALL-E, and TensorArt.
@@ -334,7 +334,7 @@ data: [DONE]`}
       name: 'Characters & Management',
       icon: UserIcon,
       content: (
-        <div className="prose max-w-none">
+        <div className="prose max-w-none dark:prose-invert">
           <h2>Characters API</h2>
           <p>
             Access and interact with Serika&apos;s character database. Characters provide personality,
@@ -467,7 +467,7 @@ data: [DONE]`}
       name: 'All Endpoints',
       icon: CodeBracketIcon,
       content: (
-        <div className="prose max-w-none">
+        <div className="prose max-w-none dark:prose-invert">
           <h2>Complete API Reference</h2>
           <p>
             Comprehensive list of all available endpoints in the Serika.dev API.

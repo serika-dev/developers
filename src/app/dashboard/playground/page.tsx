@@ -376,7 +376,7 @@ export default function PlaygroundPage() {
                           onChange={(e) => setStream(e.target.checked)}
                           disabled
                         />
-                        <label htmlFor="stream" className="ml-2 block text-sm text-gray-900">
+                        <label htmlFor="stream" className="ml-2 block text-sm text-gray-900 dark:text-white">
                           Enable Streaming (Not implemented in this demo)
                         </label>
                       </div>
@@ -683,7 +683,7 @@ export default function PlaygroundPage() {
                     </div>
                   </div>
                   
-                  <div className="prose max-w-none">
+                  <div className="prose max-w-none dark:prose-invert">
                     <h3>API Endpoints</h3>
                     <p>
                       The Serika.dev API provides endpoints for text generation, image generation, and more.

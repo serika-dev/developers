@@ -120,7 +120,7 @@ generate_text()`,
             <Tab.Panels>
               {Object.values(examples).map((example) => (
                 <Tab.Panel key={example.name} className="p-6">
-                  <div className="prose max-w-none">
+                  <div className="prose max-w-none dark:prose-invert">
                     <h3>Example using {example.name}</h3>
                     <p>This example demonstrates how to make a simple text generation request using {example.name}.</p>
                   </div>
