@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 import DashboardLayout from '@/app/components/layout/DashboardLayout';
 import Card from '@/app/components/ui/Card';
 import { Toaster, toast } from 'sonner';
+import { useTheme } from '@/app/providers/ThemeProvider';
 import { Tab } from '@headlessui/react';
 import { getModels, generateText, generateImage, getCharacters, setStoredApiKey, getStoredApiKey } from '@/app/services/api';
 import { Model, Character, GenerationRequest, ImageGenerationRequest } from '@/app/types';
@@ -21,6 +22,7 @@ function classNames(...classes: string[]) {
 }
 
 export default function PlaygroundPage() {
+  const { theme } = useTheme();
   const [activeTab, setActiveTab] = useState(0);
   const [apiKey, setApiKeyLocal] = useState('');
   const [loading, setLoading] = useState(false);
@@ -210,7 +212,7 @@ export default function PlaygroundPage() {
 
   return (
     <DashboardLayout title="API Playground">
-      <Toaster position="top-right" />
+      <Toaster position="top-right" theme={theme} />
       <div className="max-w-7xl mx-auto pb-6">
         <div className="mb-6">
           <Card title="API Key">
@@ -626,7 +628,7 @@ export default function PlaygroundPage() {
                           href={generatedImage}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="absolute top-2 right-2 bg-white/80 hover:bg-white p-1 rounded-md shadow-sm"
+                          className="absolute top-2 right-2 bg-white/80 hover:bg-white dark:bg-gray-800/80 dark:hover:bg-gray-800 p-1 rounded-md shadow-sm"
                           title="View full size"
                         >
                           <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">

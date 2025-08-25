@@ -4,8 +4,10 @@ import React, { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { login } from '@/app/services/api';
 import { Toaster, toast } from 'sonner';
+import { useTheme } from '@/app/providers/ThemeProvider';
 
 function LoginContent() {
+  const { theme } = useTheme();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
@@ -44,7 +46,7 @@ function LoginContent() {
 
   return (
     <div className="min-h-screen bg-gray-900 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
-      <Toaster position="top-right" />
+      <Toaster position="top-right" theme={theme} />
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <div className="flex justify-center">
           <h1 className="text-3xl font-bold text-white">Serika.dev</h1>

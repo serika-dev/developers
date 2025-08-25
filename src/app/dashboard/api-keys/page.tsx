@@ -23,8 +23,10 @@ import {
   ArrowPathIcon,
 } from '@heroicons/react/24/outline';
 import { Toaster, toast } from 'sonner';
+import { useTheme } from '@/app/providers/ThemeProvider';
 
 export default function ApiKeysPage() {
+  const { theme } = useTheme();
   const [apiKeys, setApiKeys] = useState<APIKey[]>([]);
   const [loading, setLoading] = useState(true);
   const [newKeyName, setNewKeyName] = useState('');
@@ -162,7 +164,7 @@ export default function ApiKeysPage() {
 
   return (
     <DashboardLayout title="API Keys">
-      <Toaster position="top-right" />
+      <Toaster position="top-right" theme={theme} />
       <div className="max-w-7xl mx-auto pb-6">
         <Card title="Create New API Key">
           <form onSubmit={handleCreateKey} className="space-y-4">

@@ -6,8 +6,10 @@ import Card from '@/app/components/ui/Card';
 import { getApiUsage, getCurrentUser, setupBilling } from '@/app/services/api';
 import { APIUsageResponse, User } from '@/app/types';
 import { Toaster, toast } from 'sonner';
+import { useTheme } from '@/app/providers/ThemeProvider';
 
 export default function BillingPage() {
+  const { theme } = useTheme();
   const [usage, setUsage] = useState<APIUsageResponse | null>(null);
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
@@ -56,7 +58,7 @@ export default function BillingPage() {
 
   return (
     <DashboardLayout title="Billing">
-      <Toaster position="top-right" />
+      <Toaster position="top-right" theme={theme} />
       <div className="max-w-7xl mx-auto pb-6">
         <div className="grid grid-cols-1 gap-6">
           <Card title="Current Plan">
