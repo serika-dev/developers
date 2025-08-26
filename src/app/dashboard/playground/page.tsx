@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
 import React, { useEffect, useState } from 'react';
@@ -10,13 +9,9 @@ import { Tab } from '@headlessui/react';
 import { getModels, generateText, generateImage, getCharacters, setStoredApiKey, getStoredApiKey } from '@/app/services/api';
 import { Model, Character, GenerationRequest, ImageGenerationRequest } from '@/app/types';
 import { ArrowPathIcon, KeyIcon, ClipboardIcon } from '@heroicons/react/24/outline';
-// @ts-ignore
 import Editor from '@monaco-editor/react';
 import Image from 'next/image';
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-// @ts-ignore
 import SyntaxHighlighter from 'react-syntax-highlighter';
-/* eslint-enable @typescript-eslint/ban-ts-comment */
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ');
@@ -24,6 +19,43 @@ function classNames(...classes: string[]) {
 
 export default function PlaygroundPage() {
   const { theme } = useTheme();
+
+  // Custom purple Matrix-style theme
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const purpleMatrixTheme: any = {
+    'hljs': {
+      display: 'block',
+      overflowX: 'auto',
+      padding: '1rem',
+      background: theme === 'dark' ? '#0a0a0a' : '#f8f8ff',
+      color: '#9d4edd',
+      borderRadius: '0.5rem'
+    },
+    'hljs-keyword': { color: '#c77dff' },
+    'hljs-string': { color: '#e0aaff' },
+    'hljs-number': { color: '#7b2cbf' },
+    'hljs-comment': { color: '#6c63ff', fontStyle: 'italic' },
+    'hljs-function': { color: '#8b5cf6' },
+    'hljs-variable': { color: '#a855f7' },
+    'hljs-property': { color: '#9333ea' },
+    'hljs-built_in': { color: '#7c3aed' },
+    'hljs-title': { color: '#6d28d9' },
+    'hljs-literal': { color: '#8b5cf6' },
+    'hljs-type': { color: '#7c3aed' },
+    'hljs-attribute': { color: '#9333ea' },
+    'hljs-meta': { color: '#6c63ff' },
+    'hljs-tag': { color: '#8b5cf6' },
+    'hljs-name': { color: '#a855f7' },
+    'hljs-attr': { color: '#9333ea' },
+    'hljs-selector-id': { color: '#7c3aed' },
+    'hljs-selector-class': { color: '#8b5cf6' },
+    'hljs-regexp': { color: '#c77dff' },
+    'hljs-link': { color: '#e0aaff' },
+    'hljs-symbol': { color: '#7b2cbf' },
+    'hljs-bullet': { color: '#9d4edd' },
+    'hljs-addition': { color: '#8b5cf6', backgroundColor: theme === 'dark' ? '#1a1a1a' : '#faf5ff' },
+    'hljs-deletion': { color: '#7b2cbf', backgroundColor: theme === 'dark' ? '#1a1a1a' : '#faf5ff' }
+  };
   const [activeTab, setActiveTab] = useState(0);
   const [apiKey, setApiKeyLocal] = useState('');
   const [loading, setLoading] = useState(false);
@@ -211,6 +243,37 @@ export default function PlaygroundPage() {
     }
   };
 
+  // Custom purple Matrix theme for Monaco Editor
+  const monacoTheme = {
+    base: theme === 'dark' ? 'vs-dark' : 'vs',
+    inherit: true,
+    rules: [
+      { token: '', foreground: '9d4edd' },
+      { token: 'string', foreground: 'e0aaff' },
+      { token: 'number', foreground: '7b2cbf' },
+      { token: 'keyword', foreground: 'c77dff' },
+      { token: 'operator', foreground: '8b5cf6' },
+      { token: 'delimiter', foreground: 'a855f7' },
+      { token: 'comment', foreground: '6c63ff', fontStyle: 'italic' },
+      { token: 'type', foreground: '7c3aed' },
+      { token: 'variable', foreground: 'a855f7' },
+      { token: 'function', foreground: '8b5cf6' },
+      { token: 'property', foreground: '9333ea' },
+    ],
+    colors: {
+      'editor.background': theme === 'dark' ? '#0a0a0a' : '#f8f8ff',
+      'editor.foreground': '#9d4edd',
+      'editorCursor.foreground': '#c77dff',
+      'editor.lineHighlightBackground': theme === 'dark' ? '#1a0d1a' : '#f0e6ff',
+      'editor.selectionBackground': theme === 'dark' ? '#2d1b69' : '#e0aaff40',
+      'editor.inactiveSelectionBackground': theme === 'dark' ? '#1a0d1a' : '#e0aaff20',
+      'editorLineNumber.foreground': '#7b2cbf',
+      'editorLineNumber.activeForeground': '#c77dff',
+      'editorBracketMatch.background': theme === 'dark' ? '#2d1b69' : '#e0aaff60',
+      'editorBracketMatch.border': '#c77dff',
+    }
+  };
+
   return (
     <DashboardLayout title="API Playground">
       <Toaster position="top-right" theme={theme} />
@@ -393,9 +456,19 @@ export default function PlaygroundPage() {
                         language="json"
                         value={getMessagesEditorValue()}
                         onChange={updateMessages}
+                        theme="purple-matrix"
+                        beforeMount={(monaco) => {
+                          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                          monaco.editor.defineTheme('purple-matrix', monacoTheme as any);
+                        }}
                         options={{
                           minimap: { enabled: false },
                           scrollBeyondLastLine: false,
+                          fontSize: 14,
+                          fontFamily: 'Monaco, Menlo, "Ubuntu Mono", monospace',
+                          lineNumbers: 'on',
+                          renderLineHighlight: 'line',
+                          automaticLayout: true,
                         }}
                       />
                     </div>
@@ -668,11 +741,11 @@ export default function PlaygroundPage() {
                     </select>
                   </div>
                   
-                  <div className="bg-gray-800 dark:bg-gray-900 rounded-md overflow-hidden">
-                    <SyntaxHighlighter language={language} style={{backgroundColor: '#1e1e1e', color: '#f8f8f2', padding: '1rem', borderRadius: '0.5rem'} as any} showLineNumbers>
+                  <div className="bg-gray-100 dark:bg-gray-900 rounded-md overflow-hidden">
+                    <SyntaxHighlighter language={language} style={purpleMatrixTheme} showLineNumbers>
                       {codeExamples[language as keyof typeof codeExamples]}
                     </SyntaxHighlighter>
-                    <div className="flex justify-end p-2 bg-gray-700 dark:bg-gray-800">
+                    <div className="flex justify-end p-2 bg-gray-200 dark:bg-gray-800">
                       <button
                         onClick={() => {
                           navigator.clipboard.writeText(codeExamples[language as keyof typeof codeExamples]);
