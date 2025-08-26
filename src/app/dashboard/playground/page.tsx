@@ -10,6 +10,7 @@ import { Tab } from '@headlessui/react';
 import { getModels, generateText, generateImage, getCharacters, setStoredApiKey, getStoredApiKey } from '@/app/services/api';
 import { Model, Character, GenerationRequest, ImageGenerationRequest } from '@/app/types';
 import { ArrowPathIcon, KeyIcon, ClipboardIcon } from '@heroicons/react/24/outline';
+// @ts-ignore
 import Editor from '@monaco-editor/react';
 import Image from 'next/image';
 /* eslint-disable @typescript-eslint/ban-ts-comment */
