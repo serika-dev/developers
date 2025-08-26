@@ -1,20 +1,55 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
 import React from 'react';
 import DashboardLayout from '@/app/components/layout/DashboardLayout';
 import Card from '@/app/components/ui/Card';
 import { Tab } from '@headlessui/react';
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-// @ts-ignore
 import SyntaxHighlighter from 'react-syntax-highlighter';
-/* eslint-enable @typescript-eslint/ban-ts-comment */
+import { useTheme } from '@/app/providers/ThemeProvider';
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ');
 }
 
 export default function ExamplesPage() {
+  const { theme } = useTheme();
+
+  // Custom purple Matrix-style theme
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const purpleMatrixTheme: any = {
+    'hljs': {
+      display: 'block',
+      overflowX: 'auto',
+      padding: '1rem',
+      background: theme === 'dark' ? '#0a0a0a' : '#f8f8ff',
+      color: '#9d4edd',
+      borderRadius: '0.5rem'
+    },
+    'hljs-keyword': { color: '#c77dff' },
+    'hljs-string': { color: '#e0aaff' },
+    'hljs-number': { color: '#7b2cbf' },
+    'hljs-comment': { color: '#6c63ff', fontStyle: 'italic' },
+    'hljs-function': { color: '#8b5cf6' },
+    'hljs-variable': { color: '#a855f7' },
+    'hljs-property': { color: '#9333ea' },
+    'hljs-built_in': { color: '#7c3aed' },
+    'hljs-title': { color: '#6d28d9' },
+    'hljs-literal': { color: '#8b5cf6' },
+    'hljs-type': { color: '#7c3aed' },
+    'hljs-attribute': { color: '#9333ea' },
+    'hljs-meta': { color: '#6c63ff' },
+    'hljs-tag': { color: '#8b5cf6' },
+    'hljs-name': { color: '#a855f7' },
+    'hljs-attr': { color: '#9333ea' },
+    'hljs-selector-id': { color: '#7c3aed' },
+    'hljs-selector-class': { color: '#8b5cf6' },
+    'hljs-regexp': { color: '#c77dff' },
+    'hljs-link': { color: '#e0aaff' },
+    'hljs-symbol': { color: '#7b2cbf' },
+    'hljs-bullet': { color: '#9d4edd' },
+    'hljs-addition': { color: '#8b5cf6', backgroundColor: theme === 'dark' ? '#1a1a1a' : '#faf5ff' },
+    'hljs-deletion': { color: '#7b2cbf', backgroundColor: theme === 'dark' ? '#1a1a1a' : '#faf5ff' }
+  };
   const examples = {
     javascript: {
       name: 'JavaScript',
@@ -127,7 +162,7 @@ generate_text()`,
                   <div className="mt-4 relative">
                     <SyntaxHighlighter
                       language={example.name.toLowerCase()}
-                      style={{backgroundColor: '#1e1e1e', color: '#f8f8f2', padding: '1rem', borderRadius: '0.5rem'} as any}
+                      style={purpleMatrixTheme}
                       customStyle={{ margin: 0 }}
                     >
                       {example.code}
