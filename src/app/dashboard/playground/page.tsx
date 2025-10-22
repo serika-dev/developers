@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/ban-ts-comment */
 'use client';
 
 import React, { useEffect, useState } from 'react';
@@ -13,10 +13,9 @@ import { ArrowPathIcon, KeyIcon, ClipboardIcon } from '@heroicons/react/24/outli
 // @ts-ignore
 import Editor from '@monaco-editor/react';
 import Image from 'next/image';
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
 import SyntaxHighlighter from 'react-syntax-highlighter';
-/* eslint-enable @typescript-eslint/ban-ts-comment */
+
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ');
@@ -720,4 +719,4 @@ export default function PlaygroundPage() {
       </div>
     </DashboardLayout>
   );
-} 
+}
