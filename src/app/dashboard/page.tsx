@@ -144,7 +144,7 @@ export default function Dashboard() {
                   <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
                     <p className="text-sm text-gray-500 dark:text-gray-400">Total Tokens</p>
                     <p className="text-2xl font-semibold text-gray-900 dark:text-white">{usage.summary.totalTokens.toLocaleString()}</p>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">€{(usage.summary.pricing.tokens * usage.summary.totalTokens).toFixed(2)}</p>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">€{(0.0000006 * usage.summary.totalTokens).toFixed(2)}</p>
                   </div>
                   <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
                     <p className="text-sm text-gray-500 dark:text-gray-400">Total Images</p>
@@ -207,4 +207,4 @@ export default function Dashboard() {
       </div>
     </DashboardLayout>
   );
-} 
+}

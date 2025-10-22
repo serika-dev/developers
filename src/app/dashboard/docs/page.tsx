@@ -62,7 +62,7 @@ export default function DocsPage() {
             Usage is metered based on tokens and images generated:
           </p>
           <ul>
-            <li><strong>Tokens:</strong> €0.000007 per token</li>
+            <li><strong>Tokens:</strong> €0.0000006 per token</li>
             <li><strong>Images:</strong> €0.02 per image</li>
             <li><strong>Admin users:</strong> Usage tracked but not billed</li>
           </ul>
@@ -437,9 +437,9 @@ data: [DONE]`}
   "summary": {
     "totalTokens": 50000,
     "totalImages": 25,
-    "totalCost": 4.00,
+    "totalCost": 0.53,
     "pricing": {
-      "tokens": 0.00007,
+      "tokens": 0.0000006,
       "images": 0.02
     },
     "isAdmin": false
@@ -449,13 +449,13 @@ data: [DONE]`}
       "_id": "/v1/chat/completions",
       "totalTokens": 35000,
       "totalImages": 0,
-      "totalCost": 2.45
+      "totalCost": 0.02
     },
     {
       "_id": "/v1/images/generations",
       "totalTokens": 15000,
       "totalImages": 25,
-      "totalCost": 1.55
+      "totalCost": 0.51
     }
   ]
 }`}
@@ -763,4 +763,4 @@ client = OpenAI(
       </div>
     </DashboardLayout>
   );
-} 
+}
